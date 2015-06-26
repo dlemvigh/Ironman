@@ -3,10 +3,14 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <header>
+    <h1>Welcome to Meteor!</h1>
+    {{> loginButtons}}
+  </header>
 
-  {{> entry_form}}
-
+  {{#if currentUser}}
+    {{> entry_form}}
+  {{/if}}
   {{> player_entries}}
 
   {{> leaderboard}}
@@ -15,20 +19,15 @@
 
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
-
 <template name="entry_form">
   <form>
-      <select name="sport">
+      <select name="sport" title="sport">
           <option>Run</option>
           <option>Swim</option>
           <option>Bike</option>
           <option>Cross-fit</option>
       </select>
-      <input type="number" name="distance" placeholder="distance" />
+      <input type="number" name="distance" title="distance" placeholder="distance" />
   </form>
 </template>
 
@@ -41,7 +40,7 @@
 </template>
 
 <template name="entry">
-    <strong>{{owner}}</strong> {{distance}}km {{sport}}
+    <strong>{{owner}}</strong> {{distance}} {{unit}} {{sport}}
 </template>
 
 <template name="leaderboard_weekly">

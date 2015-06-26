@@ -1,30 +1,30 @@
 Entries = new Mongo.Collection("entries");
 
+var sports_list = [
+      {sport: "run", unit: "km"},
+      {sport: "swim", unit: "km"},
+      {sport: "bike", unit: "km"},
+      {sport: "cross-fit", unit: "hour(s)"}
+];
+
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
-
   Template.entry_form.events({
     "submit form": function(event){
       Entries.insert({
-        owner: "me",
+        owner: Meteor.user().profile.name,
         sport: event.target.sport.value,
         distance: event.target.distance.value,
         date: new Date()
       });
+    }
+  });
+
+  Template.entry.helpers({
+    unit: function(){
+     return this.sport == "Cross-fit" ? "hours" : "km";
     }
   });
 
