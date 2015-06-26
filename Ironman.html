@@ -5,10 +5,49 @@
 <body>
   <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
+  {{> entry_form}}
+
+  {{> player_entries}}
+
+  {{> leaderboard}}
+
+  {{> leaderboard_weekly}}
+
 </body>
 
 <template name="hello">
   <button>Click Me</button>
   <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="entry_form">
+  <form>
+      <select name="sport">
+          <option>Run</option>
+          <option>Swim</option>
+          <option>Bike</option>
+          <option>Cross-fit</option>
+      </select>
+      <input type="number" name="distance" placeholder="distance" />
+  </form>
+</template>
+
+<template name="player_entries">
+  <ul>
+  {{#each entries}}
+    <li>{{> entry}}</li>
+  {{/each}}
+  </ul>
+</template>
+
+<template name="entry">
+    <strong>{{owner}}</strong> {{distance}}km {{sport}}
+</template>
+
+<template name="leaderboard_weekly">
+  weekly leaderboard
+</template>
+
+<template name="leaderboard">
+  leaderboard
 </template>
