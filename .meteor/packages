@@ -9,3 +9,6 @@ autopublish
 insecure
 accounts-ui
 accounts-facebook
+rajit:bootstrap3-datepicker
+twbs:bootstrap
+momentjs:moment

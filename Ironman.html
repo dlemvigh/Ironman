@@ -21,6 +21,7 @@
 
 <template name="entry_form">
   <form>
+      <input type="date" name="date" title="date" value="{{today}}" />
       <select name="sport" title="sport">
           <option>Run</option>
           <option>Swim</option>
@@ -40,7 +41,7 @@
 </template>
 
 <template name="entry">
-    <strong>{{owner}}</strong> {{distance}} {{unit}} {{sport}}
+    <strong>{{owner}}</strong> {{distance}} {{unit}} {{sport}} - {{formattedDate}} - {{week}}
 </template>
 
 <template name="leaderboard_weekly">
